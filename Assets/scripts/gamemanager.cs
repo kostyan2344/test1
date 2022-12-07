@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class gamemanager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -12,7 +13,7 @@ public class gamemanager : MonoBehaviour
     public static gamemanager instance;
     float speed;
     public float Speed { get { return speed; } set { speed = value; } }
-    [SerializeField] GameObject panel;
+    [SerializeField] GameObject panel, box,buttons;
     [SerializeField] Text txt;
 
     void Start()
@@ -21,6 +22,29 @@ public class gamemanager : MonoBehaviour
         Speed = 1;
         Time.timeScale = 0;
         StartCoroutine(Countdown());
+        bike.gameover += Gameover;
+    }
+    private void OnDestroy()
+    {
+        bike.gameover -= Gameover;
+    }
+    void Gameover()
+    {
+        Time.timeScale = 0;
+        _joystick.gameObject.SetActive(false); 
+        box.SetActive(false);
+        panel.SetActive(true);
+        buttons.SetActive(true);
+        txt.fontSize = 60;
+        txt.text = "Ты проиграл";
+    }
+    public void restart()
+    {
+        SceneManager.LoadScene("game");
+    }
+    public void exit()
+    {
+        SceneManager.LoadScene("menu");
     }
     IEnumerator Countdown()
     {
