@@ -14,7 +14,7 @@ public class spawnercar : MonoBehaviour
     {
         instance= this;
         
-        time= Random.Range(2.5f, 5);
+        time = Random.Range(2.5f, 5);
         Invoke("spawner", time);
     }
     void spawner()
@@ -22,6 +22,7 @@ public class spawnercar : MonoBehaviour
         index=Random.Range(0, cars.Length);
         GameObject car = Instantiate(cars[index],transform.position,transform.rotation);
         time = Random.Range(1, 5);
+        if(!bike.end)
         Invoke("spawner", time);
     }
     // Update is called once per frame

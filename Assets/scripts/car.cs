@@ -9,6 +9,7 @@ public class car : MonoBehaviour
     void Start()
     {
         speed = Random.Range(5.5f, 7.5f);
+        Destroy(gameObject,5);
     }
 
     // Update is called once per frame
