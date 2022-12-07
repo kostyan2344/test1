@@ -1211,6 +1211,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554835908}
     m_Modifications:
+    - target: {fileID: 3305581528943328905, guid: 96c1702b56fa5a7488457a6a515ac58e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305581528943328907, guid: 96c1702b56fa5a7488457a6a515ac58e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3305581528943329081, guid: 96c1702b56fa5a7488457a6a515ac58e, type: 3}
       propertyPath: m_Name
       value: Male 4
