@@ -3,20 +3,36 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 public class gamemanager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] FixedJoystick _joystick;
-    int i = 0, j, k = 0;
+    int i = 0, j, k = 0,s=5;
     public static gamemanager instance;
     float speed;
-    public float Speed { get { return speed; } set { speed= value; } }
+    public float Speed { get { return speed; } set { speed = value; } }
+    [SerializeField] GameObject panel;
+    [SerializeField] Text txt;
+
     void Start()
     {
        instance= this;
-        Speed = 5;
+        Speed = 1;
+        Time.timeScale = 0;
+        StartCoroutine(Countdown());
     }
-
+    IEnumerator Countdown()
+    {
+        while (s >= 0)
+        {
+            txt.text = s.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+            s--;
+        }
+        panel.SetActive(false);
+        Time.timeScale = 1;
+    }    
     // Update is called once per frame
     void Update()
     {
