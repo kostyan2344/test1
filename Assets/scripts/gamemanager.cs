@@ -28,7 +28,7 @@ public class gamemanager : MonoBehaviour
     {
         bike.gameover -= Gameover;
     }
-    void Gameover()
+    void Gameover(string text)
     {
         Time.timeScale = 0;
         _joystick.gameObject.SetActive(false); 
@@ -36,7 +36,7 @@ public class gamemanager : MonoBehaviour
         panel.SetActive(true);
         buttons.SetActive(true);
         txt.fontSize = 60;
-        txt.text = "“ы проиграл";
+        txt.text = text;
     }
     public void restart()
     {
@@ -65,7 +65,7 @@ public class gamemanager : MonoBehaviour
         else if (_joystick.Horizontal <= 1 && _joystick.Horizontal > 0 && _joystick.Vertical < 0 && _joystick.Vertical >= -1) { j = i; i = 2; }
         else if (_joystick.Horizontal < 0 && _joystick.Horizontal >= -1 && _joystick.Vertical < 0 && _joystick.Vertical >= -1) { j = i; i = 3; }
         else if (_joystick.Horizontal < 0 && _joystick.Horizontal >= -1 && _joystick.Vertical > 0 && _joystick.Vertical <= 1) { j = i; i = 4; }
-        if (j != i) { print(i);hook(i, j); }
+        if (j != i) { hook(i, j); }
     }
     void hook(int n, int o)
     { 
@@ -74,11 +74,11 @@ public class gamemanager : MonoBehaviour
             k++; 
             if (k == 4) 
             { 
-                print("двидение вправо"); 
+                 
                 k = 0;
                 Speed += 0.5f;
             } 
         }
-        if (n < o || (n == 4 && o == 1)) { k--; if (k == -4) { print("двидение влево"); k = 0; Speed -= 0.5f; } }
+        if (n < o || (n == 4 && o == 1)) { k--; if (k == -4) { k = 0; Speed -= 0.5f; } }
     }
 }
