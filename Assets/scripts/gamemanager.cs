@@ -9,7 +9,7 @@ public class gamemanager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] FixedJoystick _joystick;
-    int i = 0, j, k = 0,s=5;
+    int i = 0, j, k = 0;
     public static gamemanager instance;
     float speed;
     public float Speed { get { return speed; } set { speed = value; } }
@@ -21,7 +21,6 @@ public class gamemanager : MonoBehaviour
        instance= this;
         Speed = 1;
         Time.timeScale = 0;
-        StartCoroutine(Countdown());
         bike.gameover += Gameover;
     }
     private void OnDestroy()
@@ -46,18 +45,11 @@ public class gamemanager : MonoBehaviour
     {
         SceneManager.LoadScene("menu");
     }
-    IEnumerator Countdown()
+    public void startgame()
     {
-        while (s >= 0)
-        {
-            txt.text = s.ToString();
-            yield return new WaitForSecondsRealtime(1f);
-            s--;
-        }
         panel.SetActive(false);
         Time.timeScale = 1;
-    }    
-    // Update is called once per frame
+    }
     void Update()
     {
 

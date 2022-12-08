@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class spawnercar : MonoBehaviour
 {
-    // Start is called before the first frame update
     float time;
     public static spawnercar instance;
     [SerializeField] GameObject[] cars;
@@ -13,7 +12,6 @@ public class spawnercar : MonoBehaviour
     void Start()
     {
         instance= this;
-        
         time = Random.Range(2.5f, 5);
         Invoke("spawner", time);
     }
@@ -24,10 +22,5 @@ public class spawnercar : MonoBehaviour
         time = Random.Range(1, 5);
         if(!bike.end)
         Invoke("spawner", time);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
