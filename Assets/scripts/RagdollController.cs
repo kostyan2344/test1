@@ -17,7 +17,10 @@ internal class RagdollController : MonoBehaviour
         ToggleRagdoll(true);
         bike.death += ToggleRagdoll2;
     }
-
+    private void OnDestroy()
+    {
+        bike.death -= ToggleRagdoll2;
+    }
     private void ToggleRagdoll(bool isActivated)
     {
 
